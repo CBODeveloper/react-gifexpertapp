@@ -1,19 +1,20 @@
-import React from 'react';
+import React  from 'react';
 import { useFetchGifs } from '../hooks/useFetchGifs';
-import { GifGridItem } from './GifGridItem';
+import { GifGridItem } from './GifGridItem';  
 
-export const GifGrid = ({ category }) => {
 
-    const { data:images, loading } = useFetchGifs( category );
+export const GifGrid =  ({ category }) => {
+
+    const { data:images, loading } = useFetchGifs( category ); 
+  
 
     return (
-        <>
-            <h3 className="animate__animated animate__fadeIn"> { category } </h3>
+    <>
+        <h3 className="animate__rubberBand"> { category } </h3>
 
-            { loading && <p className="animate__animated animate__flash">Loading</p> }
-
-            <div className="card-grid">
-                
+        { /*loading ? 'Cargando...' : 'Data cargada' */}
+        { loading && <p className="animate__swing">Loaing...</p> }
+        <div className="car-grid">   
                 {
                     images.map( img => (
                         <GifGridItem 
@@ -21,9 +22,9 @@ export const GifGrid = ({ category }) => {
                             { ...img }
                         />
                     ))
+                    
                 }
-            
-            </div>
-        </>
-    )
+        </div>
+    </>
+  )
 }
